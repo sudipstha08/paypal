@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
+import { message } from 'antd'
 import { config } from '@utils'
 
 const HomePage = () => {
-  const [loaded, setLoaded] = React.useState(false)
-  const paypalRef = React.useRef()
+  const [loaded, setLoaded] = useState(false)
+  const paypalRef = useRef(null)
 
   const addPaypalScript = () => {
     const script = document.createElement('script')
@@ -44,7 +45,7 @@ const HomePage = () => {
             },
             onApprove: function (data, actions) {
               return actions.order.capture().then(function (details) {
-                alert('Transaction completed by ', details.payer.given_name)
+                message.success(`Transaction completed by ${details?.payer?.given_name}`)
               })
             },
           })
