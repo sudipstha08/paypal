@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import { config } from '@utils'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -31,6 +32,12 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="icon" href="/favicon.ico" />
+          {/* <script
+            src={`https://www.paypal.com/sdk/js?client-id=${config.paypal.clientID}`}
+          ></script>
+          <script
+            src={`https://www.paypal.com/sdk/js?client-id=${config.paypal.clientID}&components=buttons`}
+          ></script> */}
         </Head>
         <body>
           <Main />
