@@ -16,7 +16,6 @@ const HomePage = () => {
   }
 
   useEffect(() => {
-    console.log('fsdfdsf===>', window)
     if (!window.paypal) {
       addPaypalScript()
     } else {
@@ -33,7 +32,6 @@ const HomePage = () => {
             createOrder: function (data, actions) {
               // Set up the transaction
               return actions.order.create({
-                
                 purchase_units: [
                   {
                     amount: {
@@ -45,7 +43,9 @@ const HomePage = () => {
             },
             onApprove: function (data, actions) {
               return actions.order.capture().then(function (details) {
-                message.success(`Transaction completed by ${details?.payer?.given_name}`)
+                message.success(
+                  `Transaction completed by ${details?.payer?.given_name}`,
+                )
               })
             },
           })
