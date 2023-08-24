@@ -35,7 +35,7 @@ const HomePage = () => {
                 purchase_units: [
                   {
                     amount: {
-                      value: '10',
+                      value: '2000',
                     },
                   },
                 ],
